@@ -29,6 +29,7 @@ def evaluate(MODEL_PATH, CFG_PATH, GT_PATH):
                               cfg.data['width'],
                               [0],
                               is_train=False,
+                              img_ext='.png' if cfg.data['png'] else False,
                               gt_depth_path=GT_PATH)
 
     dataloader = DataLoader(dataset,
@@ -110,6 +111,6 @@ def evaluate(MODEL_PATH, CFG_PATH, GT_PATH):
 
 if __name__ == "__main__":
     CFG_PATH = '../config/cfg_kitti_fm.py'#path to cfg file
-    GT_PATH = '/media/user/harddisk/data/kitti/kitti_raw/rawdata/gt_depths.npz'#path to kitti gt depth
-    MODEL_PATH = '/media/user/harddisk/weight/fm_depth.pth'#path to model weights
+    GT_PATH = '/leying/DepthEstimation/DiPE/splits/benchmark/gt_depths.npz'#path to kitti gt depth
+    MODEL_PATH = '../checkpoints/fm_depth.pth'#path to model weights
     evaluate(MODEL_PATH, CFG_PATH, GT_PATH)
